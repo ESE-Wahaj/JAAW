@@ -1,5 +1,6 @@
 {
-  "name": "zome",
+"homepage": "https://ESE-Wahaj.github.io/JAAW",
+  "name": "JAAW",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,6 +17,7 @@
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@zegocloud/zego-uikit-prebuilt": "^2.0.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.16.12",
     "classnames": "^2.5.1",
     "dotenv": "^16.4.5",
     "firebase": "^10.9.0",
@@ -34,6 +36,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -54,5 +58,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }
