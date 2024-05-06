@@ -19,7 +19,7 @@ function AdminDashboard() {
   const [validTillDate, setValidTillDate] = useState('');
   const [lastUpdated, setLastUpdated] = useState('');
   const [savedMessage, setSavedMessage] = useState('');
-  const [newValueCheck, setNewValueCheck] = useState(true);
+  const [, setNewValueCheck] = useState(true);
 
   const DefaultAppId = 1740873369;
   const DefaultServerSecret = "4ec48dfc76136444118292304a99ee0b";
@@ -72,7 +72,7 @@ function AdminDashboard() {
       return;
     // } else if (String(appIdFromMeetings) === appIdInput && String(serverSecretFromMeetings) === serverSecretInput) {
     //   alert('Already saved');
-      return;
+      // return;
     }
 
     // Save inputs to local storage

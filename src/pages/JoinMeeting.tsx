@@ -2,12 +2,12 @@ import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { onAuthStateChanged } from "firebase/auth";
 import { getDocs, query, where } from "firebase/firestore";
 import moment from "moment";
-import React, { useEffect, useState, useRef } from "react";
+import  { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useToast from "../hooks/useToast";
 import { firebaseAuth, meetingsRef } from "../utils/firebaseConfig";
 import { generateMeetingID } from "../utils/generateMeetingId";
-import { appIdInput, serverSecretInput, validTillDate, newValueCheck } from "./AdminDashboard";
+
 
 
 
@@ -19,6 +19,8 @@ const JoinMeeting = () => {
   const [user, setUser] = useState<any>(undefined);
   const [userLoaded, setUserLoaded] = useState(false);
   const meetingContainerRef = useRef<HTMLDivElement>(null);
+  // const appId = useRef<number | null>(null);
+  // const serverSecret = useRef<string | null>(null);
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
     if (currentUser) {
@@ -88,18 +90,26 @@ const JoinMeeting = () => {
       }
     };
     getMeetingData();
+   
   }, [params.id, user, userLoaded, createToast, navigate]);
 ;
 
-    const appId = process.env.REACT_APP_ZEGOCLOUD_APP_ID;
-    const serverSecret = process.env.REACT_APP_ZEGOCLOUD_SERVER_SECRET;
+    // const appId = process.env.REACT_APP_ZEGOCLOUD_APP_ID;
+    // const serverSecret = process.env.REACT_APP_ZEGOCLOUD_SERVER_SECRET;
+
+    // useEffect(() => {
+    //   appId.current = Number(process.env.REACT_APP_ZEGOCLOUD_APP_ID) || 1740873369;
+    //   serverSecret.current = String(process.env.REACT_APP_ZEGOCLOUD_SERVER_SECRET) || "4ec48dfc76136444118292304a99ee0b";
+    // }, []);
+    const appId = 1740873369;
+    const serverSecret = "4ec48dfc76136444118292304a99ee0b";
   
   useEffect(() => {
     const joinMeeting = async () => {
       if (isAllowed && meetingContainerRef.current) {
         const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
           Number(appId),
-          String(serverSecret), // Add null check and provide default value
+        String(serverSecret), // Add null check and provide default value
           params.id as string,
           user?.uid ? user.uid : generateMeetingID(),
           user?.displayName ? user.displayName : generateMeetingID()
@@ -122,7 +132,7 @@ const JoinMeeting = () => {
       }
     };
 
-    joinMeeting();
+    joinMeeting();     
   }, [isAllowed, params.id, user]);
 
   return (
@@ -147,25 +157,3 @@ const JoinMeeting = () => {
 };
 
 export default JoinMeeting;
-
-
-// if (newValueCheck === "true") {
-//   const appId = Number(appIdInput);
-//   const serverSecret = String(serverSecretInput);
-//   const validTill = String(validTillDate);
-//   }  if (newValueCheck === "false"){
-//     const appId = 1740873369;
-//     const serverSecret = "4ec48dfc76136444118292304a99ee0b";
-//     const validTill = "30-May-2024";
-//   }
-// const appId = Number(appIdInput);
-// const serverSecret = String(serverSecretInput);
-// const validTill = String(validTillDate);
-
-// const appIdFromMeetings = appId;
-// const serverSecretFromMeetings = serverSecret;
-// const validTillDateFromMeetings = validTill;
-
-
-
-// export { appIdFromMeetings, serverSecretFromMeetings, validTillDateFromMeetings };

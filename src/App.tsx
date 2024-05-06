@@ -6,8 +6,8 @@ import {
 import { EuiThemeColorMode } from "@elastic/eui/src/services/theme";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Routes, Route, Router, redirect } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
+
 import { useAppSelector } from "./app/hooks";
 import { setToasts } from "./app/slices/MeetingSlice";
 import ThemeSelector from "./components/ThemeSelector";
@@ -26,10 +26,10 @@ import Admin from "./pages/Admin";
 import DownloadApp from "./pages/DownloadApp";
 import AdminDashboard from "./pages/AdminDashboard";
 // import {PrRoutes as Routes, PrRoute as Route} from 'protected-react-router';
-import { BrowserRouter } from 'react-router-dom';
-import { firebaseAuth } from "./utils/firebaseConfig";
-import useAuth from "./hooks/useAuth";
-import { onAuthStateChanged } from "firebase/auth";
+
+// import { firebaseAuth } from "./utils/firebaseConfig";
+
+// import { onAuthStateChanged } from "firebase/auth";
 export default function App() {
   const dispatch = useDispatch();
   const isDarkTheme = useAppSelector((zoomApp) => zoomApp.auth.isDarkTheme);
@@ -39,7 +39,7 @@ export default function App() {
 
 
   // console.log(process.env.REACT_APP_ZEGOCLOUD_APP_ID)
-  const navigate = useNavigate();
+
   const removeToast = (removedToast: { id: string }) => {
     dispatch(
       setToasts(
@@ -48,26 +48,26 @@ export default function App() {
     );
   };
 
-  const protectionAuth = () => {
-    onAuthStateChanged(firebaseAuth, (user) => {
-      if (user) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-  };
-  const isAuthenticated = protectionAuth();
+  // const protectionAuth = () => {
+  //   onAuthStateChanged(firebaseAuth, (user) => {
+  //     if (user) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   });
+  // };
+  // const isAuthenticated = protectionAuth();
 
-  const notAuthenticatedAction = () => {
-    // Redirect logic based on the current route
-    const currentPath = window.location.pathname;
-    if (currentPath === '/login' || currentPath === '/admin') {
-      // Do nothing if on login or admin page
-      redirect("/login");
-      return;
-    }
-  };
+  // const notAuthenticatedAction = () => {
+  //   // Redirect logic based on the current route
+  //   const currentPath = window.location.pathname;
+  //   if (currentPath === '/login' || currentPath === '/admin') {
+  //     // Do nothing if on login or admin page
+  //     redirect("/login");
+  //     return;
+  //   }
+  // };
 
   const [theme, setTheme] = useState<EuiThemeColorMode>("light");
   useEffect(() => {
