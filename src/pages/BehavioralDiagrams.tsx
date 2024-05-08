@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import BehaviouralDiagram from "../assets/Behavioural_Diagrams.png";
-
+import classnames from "classnames";
 import {
   EuiCard,
   EuiFlexGroup,
   EuiFlexItem,
-
+  EuiImage,
   EuiPanel,
-
+  EuiSpacer,
   EuiText,
   EuiTextColor,
 } from "@elastic/eui";
-
+import StructuralDiagrams from "../assets/Structural Diagrams.png";
+import { reverse } from "dns";
+import { ALIGNMENTS } from "@elastic/eui/src/components/text/text_align";
 
 interface Diagram {
   id: number;

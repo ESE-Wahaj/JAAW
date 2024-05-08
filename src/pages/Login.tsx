@@ -3,7 +3,13 @@ import {
   EuiButton,
   EuiFlexGroup,
   EuiFlexItem,
-
+  EuiHeader,
+  EuiHeaderLink,
+  EuiHeaderLinks,
+  EuiHeaderLogo,
+  EuiHeaderSection,
+  EuiHeaderSectionItem,
+  EuiBottomBar,
   EuiImage,
   EuiPanel,
   EuiPopover,
@@ -21,7 +27,7 @@ import Footer from "./Footer";
 import {
   GoogleAuthProvider,
   signInWithPopup,
- 
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { firebaseAuth, firebaseDB, usersRef } from "../utils/firebaseConfig";
 import { useNavigate } from "react-router-dom";

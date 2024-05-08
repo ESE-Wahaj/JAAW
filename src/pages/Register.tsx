@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { firebaseAuth, usersRef } from "../utils/firebaseConfig"; // Import firebaseDB and usersRef
+import { firebaseAuth, firebaseDB, usersRef } from "../utils/firebaseConfig"; // Import firebaseDB and usersRef
 import {
   EuiButton,
   EuiFlexGroup,
   EuiFlexItem,
-  
+  EuiImage,
   EuiPanel,
   EuiFieldText,
   EuiFormRow,
- 
+  EuiPopover,
   EuiProvider,
   EuiSpacer,
   EuiText,

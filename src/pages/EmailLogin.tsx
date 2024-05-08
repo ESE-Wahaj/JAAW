@@ -1,19 +1,21 @@
 import React, { useState } from "react";
-
-
-
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { firebaseAuth } from "../utils/firebaseConfig";
+import { useAppDispatch } from "../app/hooks";
+import { setUser } from "../app/slices/AuthSlice";
 import { useNavigate } from "react-router-dom";
 import ForgetPassword from "./ForgetPassword";
 import {
   EuiButton,
   EuiFlexGroup,
   EuiFlexItem,
+  EuiImage,
   EuiPanel,
   EuiFieldText,
   EuiFormRow,
   EuiPopover,
   EuiProvider,
-
+  EuiSpacer,
   EuiText,
   EuiTextColor,
   EuiLink,
@@ -27,13 +29,13 @@ function EmailLogin() {
 
   const [emailOrUsername, setEmailOrUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const handleSubmit = async () => {
     try {
       // Sign in the user with email and password
-
-      
+      const userCredential = await signInWithEmailAndPassword(firebaseAuth, emailOrUsername, password);
+      const user = userCredential.user;
 
     //   dispatch(setUser({ uid: user.uid , email: user.email!, name: user.displayName! }));
       navigate("/");

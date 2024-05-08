@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import LoginHeader from "./LoginHeader";
 import {
   EuiButton,
  
@@ -14,7 +14,9 @@ import {
   EuiHeaderSection,
  
   EuiHeaderSectionItem,
-
+ 
+  EuiPageHeader,
+  EuiPageHeaderSection,
   EuiTitle,
 } from "@elastic/eui";
 import logo from "../assets/HeaderLogo.png";
@@ -22,7 +24,7 @@ import { useNavigate } from "react-router-dom";
 
 const DownloadApp: React.FC = () => {
     const navigate = useNavigate();
-    const [selectedEntry, ] = useState("Vision Document");
+    const [selectedEntry, setSelectedEntry] = useState("Vision Document");
   
     const handleDownload = () => {
       // Replace 'Your-APK-File-Path' with the relative path to your APK file

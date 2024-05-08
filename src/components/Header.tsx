@@ -3,7 +3,7 @@ import {
   EuiFlexGroup,
   EuiFlexItem,
   EuiHeader,
-
+  EuiHeaderLogo,
   EuiImage,
   EuiText,
   EuiTextColor,
@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../app/hooks";
 import { changeTheme } from "../app/slices/AuthSlice";
-
+import logoh from "../assets/HeaderLogo.png";
 import {
   getCreateMeetingBreadCrumbs,
   getDashboardBreadCrumbs,

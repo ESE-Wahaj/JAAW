@@ -9,17 +9,17 @@ import {
   EuiFieldText,
   EuiFormRow,
   EuiProvider,
- 
+  EuiSpacer,
   EuiText,
   EuiTextColor,
 } from "@elastic/eui";
 import { useNavigate } from "react-router-dom";
-
-
+import { useAppDispatch } from "../app/hooks";
+import { setUser } from "../app/slices/AuthSlice";
 
 function GuestLogin() {
   const [username, setUsername] = useState("");
-
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = async () => {

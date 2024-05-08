@@ -11,11 +11,11 @@ import Structural_Diagrams from "../assets/Structural Diagrams.png";
 import ER_Diagrams from "../assets/ER_Diagram.png";
 // import CompositeStructureDiagramImage from "../assets/CompositeStructureDiagram.png";
 // import DeploymentDiagramImage from "../assets/DeploymentDiagram.png";
-// import PackageDiagramImage from "../assets/PackageDiagram.png";
-// import ProfileDiagramImage from "../assets/ProfileDiagram.png";
-// import ClassDiagramImage from "../assets/ClassDiagram.png";
-// import ObjectDiagramImage from "../assets/ObjectDiagram.png";
-// import ComponentDiagramImage from "../assets/ComponentDiagram.png";
+import PackageDiagramImage from "../assets/PackageDiagram.png";
+import ProfileDiagramImage from "../assets/ProfileDiagram.png";
+import ClassDiagramImage from "../assets/ClassDiagram.png";
+import ObjectDiagramImage from "../assets/ObjectDiagram.png";
+import ComponentDiagramImage from "../assets/ComponentDiagram.png";
 
 interface Diagram {
   id: number;
