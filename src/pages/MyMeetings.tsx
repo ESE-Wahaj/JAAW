@@ -17,7 +17,7 @@ import Header from "../components/Header";
 import useAuth from "../hooks/useAuth";
 import { meetingsRef } from "../utils/firebaseConfig";
 import { MeetingType } from "../utils/types";
-const host = "sda-zoomy.netlify.app";
+const host = "jaaw.netlify.app";
 export default function MyMeetings() {
   useAuth();
   const userInfo = useAppSelector((zoom) => zoom.auth.userInfo);

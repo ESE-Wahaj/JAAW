@@ -8,9 +8,11 @@ import {
   EuiTextColor,
 } from "@elastic/eui";
 import Structural_Diagrams from "../assets/Structural Diagrams.png";
+import OtherRequirementimg from "../assets/OtherRequirements.png";
 import ER_Diagrams from "../assets/ER_Diagram.png";
 // import CompositeStructureDiagramImage from "../assets/CompositeStructureDiagram.png";
 import DeploymentDiagramImage from "../assets/DeploymentDiagram.png";
+import ArchitectureDiagram from "../assets/ArchitectureDiagram.png";
 import PackageDiagramImage from "../assets/PackageDiagram.png";
 import ProfileDiagramImage from "../assets/ProfileDiagram.png";
 import ClassDiagramImage from "../assets/ClassDiagram.png";
@@ -25,7 +27,7 @@ interface Diagram {
   disabled: boolean;
 }
 
-function StructuralDiagrams() {
+function OtherRequirements() {
   const [selectedDiagramId, setSelectedDiagramId] = useState<number | null>(
     null
   );
@@ -61,46 +63,46 @@ function StructuralDiagrams() {
 
     {
       id: 1,
-      title: "Deployment Diagram",
-      image: [DeploymentDiagramImage],
+      title: "Architecture Diagram",
+      image: [ArchitectureDiagram],
       disabled: false,
     },
-    {
-      id: 2,
-      title: "Package Diagram",
-      image: [Structural_Diagrams],
-      disabled: false,
-    },
-    {
-      id: 3,
-      title: "ER Diagram",
-      image: [ER_Diagrams],
-      disabled: false,
-    },
-    {
-      id: 4,
-      title: "Class Diagram",
-      image: [Structural_Diagrams],
-      disabled: false,
-    },
-    {
-      id: 5,
-      title: "Object Diagram",
-      image: [Structural_Diagrams],
-      disabled: false,
-    },
-    {
-      id: 6,
-      title: "Component Diagram",
-      image: [Structural_Diagrams],
-      disabled: false,
-    },
-    {
-      id: 7,
-      title: "Composite Structure Diagram",
-      image: [Structural_Diagrams],
-      disabled: true,
-    },
+    // {
+    //   id: 2,
+    //   title: "Package Diagram",
+    //   image: [Structural_Diagrams],
+    //   disabled: false,
+    // },
+    // {
+    //   id: 3,
+    //   title: "ER Diagram",
+    //   image: [ER_Diagrams],
+    //   disabled: false,
+    // },
+    // {
+    //   id: 4,
+    //   title: "Class Diagram",
+    //   image: [Structural_Diagrams],
+    //   disabled: false,
+    // },
+    // {
+    //   id: 5,
+    //   title: "Object Diagram",
+    //   image: [Structural_Diagrams],
+    //   disabled: false,
+    // },
+    // {
+    //   id: 6,
+    //   title: "Component Diagram",
+    //   image: [Structural_Diagrams],
+    //   disabled: false,
+    // },
+    // {
+    //   id: 7,
+    //   title: "Composite Structure Diagram",
+    //   image: [Structural_Diagrams],
+    //   disabled: true,
+    // },
     // Add other diagrams here...
   ];
   return (
@@ -183,12 +185,12 @@ function StructuralDiagrams() {
                 </>
               ) : (
                 <EuiText textAlign="center">
-                  <h2>Structural Diagrams</h2>
-                  <EuiTextColor color="subdued">Select a diagram from the sidebar</EuiTextColor>
+                  <h2>Other Requirements</h2>
+                  <EuiTextColor color="subdued">Select from the sidebar on left</EuiTextColor>
                   <div style={{ maxWidth: "100%", overflow: "hidden" }}>
                     <img
-                      src={Structural_Diagrams}
-                      alt="Structural Diagrams"
+                      src={OtherRequirementimg}
+                      alt="Other Requirements"
                       style={{ maxWidth: maxWidth, margin: "0 auto" }}
                     />
                   </div>
@@ -201,4 +203,4 @@ function StructuralDiagrams() {
     </div>
   );
 }
-export default StructuralDiagrams;
+export default OtherRequirements;

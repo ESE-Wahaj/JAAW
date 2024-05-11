@@ -18,6 +18,7 @@ import {
 import logo from "../assets/HeaderLogo.png";
 import BehavioralDiagrams from "./BehavioralDiagrams"; // Import the BehavioralDiagrams component
 import StructuralDiagrams from "./StructuralDiagrams";
+import OtherRequirements from "./OtherRequirements";
 
 function Documentation() {
   const navigate = useNavigate();
@@ -192,18 +193,6 @@ function Documentation() {
             alignItems="center"
             style={{ padding: "20px" }}
           >
-            <EuiFlexItem>
-              <EuiPanel>
-                <EuiText textAlign="center">
-                  <h2>Other Requirements</h2>
-                  <EuiTextColor color="subdued">
-                    Phasellus magna. In hac habitasse platea dictumst. Duis
-                    fermentum, metus sed congue gravida, arcu dui ornare odio,
-                    a placerat libero velit ac nisi.
-                  </EuiTextColor>
-                </EuiText>
-              </EuiPanel>
-            </EuiFlexItem>
           </EuiFlexGroup>
         )}
 
@@ -211,7 +200,9 @@ function Documentation() {
           <BehavioralDiagrams />
         ) : selectedEntry === "Structural Diagrams" ? (
           <StructuralDiagrams />
-        ) : null}
+        ) : selectedEntry === "Other Requirements" ? (
+          <OtherRequirements />
+        ):null}
       </main>
     </>
   );
