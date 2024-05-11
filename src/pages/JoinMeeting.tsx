@@ -2,23 +2,18 @@ import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { onAuthStateChanged } from "firebase/auth";
 import { getDocs, query, where } from "firebase/firestore";
 import moment from "moment";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useToast from "../hooks/useToast";
 import { firebaseAuth, meetingsRef } from "../utils/firebaseConfig";
 import { generateMeetingID } from "../utils/generateMeetingId";
-import { appIdInput, serverSecretInput, validTillDate, newValueCheck } from "./AdminDashboard";
-
-
-
-const JoinMeeting = () => {
+export default function JoinMeeting() {
   const params = useParams();
   const navigate = useNavigate();
   const [createToast] = useToast();
   const [isAllowed, setIsAllowed] = useState(false);
   const [user, setUser] = useState<any>(undefined);
   const [userLoaded, setUserLoaded] = useState(false);
-  const meetingContainerRef = useRef<HTMLDivElement>(null);
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
     if (currentUser) {
@@ -26,7 +21,6 @@ const JoinMeeting = () => {
     }
     setUserLoaded(true);
   });
-
   useEffect(() => {
     const getMeetingData = async () => {
       if (params.id && userLoaded) {
@@ -89,83 +83,53 @@ const JoinMeeting = () => {
     };
     getMeetingData();
   }, [params.id, user, userLoaded, createToast, navigate]);
-;
 
-    const appId = process.env.REACT_APP_ZEGOCLOUD_APP_ID;
-    const serverSecret = process.env.REACT_APP_ZEGOCLOUD_SERVER_SECRET;
-  
-  useEffect(() => {
-    const joinMeeting = async () => {
-      if (isAllowed && meetingContainerRef.current) {
-        const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
-          Number(appId),
-          String(serverSecret), // Add null check and provide default value
-          params.id as string,
-          user?.uid ? user.uid : generateMeetingID(),
-          user?.displayName ? user.displayName : generateMeetingID()
-        );
-        const zp = ZegoUIKitPrebuilt.create(kitToken);
+  const appId = process.env.REACT_APP_ZEGOCLOUD_APP_ID;
+  const serverSecret = process.env.REACT_APP_ZEGOCLOUD_SERVER_SECRET;
+const appId1 = Number(appId);
+const serverSecret1 = serverSecret as string;
 
-        zp?.joinRoom({
-          container: meetingContainerRef.current,
-          maxUsers: 50,
-          sharedLinks: [
-            {
-              name: "Personal link",
-              url: window.location.origin,
-            },
-          ],
-          scenario: {
-            mode: ZegoUIKitPrebuilt.VideoConference,
-          },
-        });
-      }
-    };
+  const myMeeting = async (element: any) => {
+    const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
 
-    joinMeeting();
-  }, [isAllowed, params.id, user]);
+      appId1,
+      serverSecret1,
+      params.id as string,
+      user?.uid ? user.uid : generateMeetingID(),
+      user?.displayName ? user.displayName : generateMeetingID()
+    );
+    const zp = ZegoUIKitPrebuilt.create(kitToken);
 
-  return (
+    zp?.joinRoom({
+      container: element,
+      maxUsers: 50,
+      sharedLinks: [
+        {
+          name: "Personal link",
+          url: window.location.origin,
+        },
+      ],
+      scenario: {
+        mode: ZegoUIKitPrebuilt.VideoConference,
+      },
+    });
+  };
+
+  return isAllowed ? (
     <div
       style={{
         display: "flex",
         height: "100vh",
         flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
       }}
     >
-      {isAllowed && (
-        <div
-          className="myCallContainer"
-          ref={meetingContainerRef}
-          style={{ width: "100%", height: "100%" }}
-        ></div>
-      )}
+      <div
+        className="myCallContainer"
+        ref={myMeeting}
+        style={{ width: "100%", height: "100vh" }}
+      ></div>
     </div>
+  ) : (
+    <></>
   );
-};
-
-export default JoinMeeting;
-
-
-// if (newValueCheck === "true") {
-//   const appId = Number(appIdInput);
-//   const serverSecret = String(serverSecretInput);
-//   const validTill = String(validTillDate);
-//   }  if (newValueCheck === "false"){
-//     const appId = 1740873369;
-//     const serverSecret = "4ec48dfc76136444118292304a99ee0b";
-//     const validTill = "30-May-2024";
-//   }
-// const appId = Number(appIdInput);
-// const serverSecret = String(serverSecretInput);
-// const validTill = String(validTillDate);
-
-// const appIdFromMeetings = appId;
-// const serverSecretFromMeetings = serverSecret;
-// const validTillDateFromMeetings = validTill;
-
-
-
-// export { appIdFromMeetings, serverSecretFromMeetings, validTillDateFromMeetings };
+}
