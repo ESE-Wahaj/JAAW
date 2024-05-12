@@ -2,27 +2,7 @@
 
 ## Description
 JAAW is a video calling application that allows users to connect and communicate through video calls. This project was developed as a semester project for the Software Design and Architecture subject.
-
-## Features
-- Real-time video and audio communication
-- User authentication and registration
-- Contact list management
-- Call history tracking
-- Screen sharing
-- Chat functionality
-- Call recording
-
-## Installation
-To run JAAW on your system, you need to have the following dependencies installed:
-
-1. Clone this repository to your local machine.
-2. Install the required dependencies using either npm or yarn with the following commands:
-
-# JAAW - Video Calling Application
-
-## Description
-JAAW is a video calling application that allows users to connect and communicate through video calls. This project was developed as a semester project for the Software Design and Architecture subject.
-
+## Check It out live at: https://jaaw.netlify.app
 ## Features
 - Real-time video and audio communication
 - User authentication and registration
